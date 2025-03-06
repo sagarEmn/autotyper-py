@@ -3,6 +3,12 @@ import time
 import re
 import pyperclip  # For clipboard access
 
+import platform
+if platform.system() == 'Windows':
+    import winsound
+else:
+    import os
+
 def remove_indentation(code):
     """
     Removes all indentation from the code while preserving empty lines.
@@ -18,6 +24,9 @@ def remove_indentation(code):
     return processed_lines
 
 def type_code(code, delay_between_lines=0.5, initial_delay=3, char_delay=0.1):
+    # Play start sound
+    play_sound('start')
+    
     # Remove indentation
     lines = remove_indentation(code)
     
@@ -44,6 +53,19 @@ def type_code(code, delay_between_lines=0.5, initial_delay=3, char_delay=0.1):
         print(f"Typed line {idx}/{total_lines}: {line[:50]}{'...' if len(line) > 50 else ''}")
 
     print("Finished typing!")
+    # Play completion sound
+    play_sound('complete')
+    
+def play_sound(sound_type):
+    """Play a sound notification. sound_type can be 'start' or 'complete'."""
+    if platform.system() == 'Windows':
+        # On Windows, use winsound
+        frequency = 800 if sound_type == 'start' else 1000
+        duration = 500  # milliseconds
+        winsound.Beep(frequency, duration)
+    else:
+        # On Unix-like systems, use terminal bell
+        os.system('tput bel')
 
 if __name__ == "__main__":
     # Get text from clipboard
