@@ -1,2 +1,0 @@
-# Configure PyAutoGUI
-pyautogui.FAILSAFE = True  # Move mouse to top-left to abort
