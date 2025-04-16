@@ -98,7 +98,7 @@ if __name__ == "__main__":
         # You can adjust these timing values as needed
         type_code(
             clipboard_content,
-            delay_between_lines=0.5,  # Increased delay between lines
+            delay_between_lines=0.005,  # Increased delay between lines
             initial_delay=5,          # Increased initial delay
             char_delay=0.001          # Added delay between characters
         )
@@ -106,3 +106,4 @@ if __name__ == "__main__":
         print("\nTyping aborted by moving mouse to corner")
     except Exception as e:
         print(f"\nAn error occurred: {e}")
+       

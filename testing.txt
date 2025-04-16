@@ -1,1 +1,2 @@
-py autotyper-nospace.py
+# Configure PyAutoGUI
+pyautogui.FAILSAFE = True  # Move mouse to top-left to abort
